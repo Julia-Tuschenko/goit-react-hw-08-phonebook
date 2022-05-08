@@ -11,6 +11,7 @@ import authOperations from './redux/auth/authOperation';
 import PrivatRoute from './components/PrivatRout';
 import PublicRoute from './components/PublicRoute';
 import authSelectors from './redux/auth/authSelectors';
+import Container from './components/GlobalStyle/GlobalStyleConteiner';
 
 const HomePageView = lazy(() => import(`./views/HomePageView/HomePageView`));
 const ContactsRoutsView = lazy(() => import(`./views/ContactsRoutsView/ContactsRoutsView`));
@@ -20,13 +21,13 @@ const RegisterFormView = lazy(() => import(`./views/RegisterFormView`));
 function App() {
   const dispatch = useDispatch();
   const isFetchingCurrentUser = useSelector(authSelectors.isFetchingCurrentUser);
-  
+  console.log(isFetchingCurrentUser);
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser())
   }, [dispatch]);
 
-  return ( !isFetchingCurrentUser &&
-(    <>
+  return (
+   <Container> 
     <Suspense fallback={<p>Загружаем...</p>}>
     <GlobalStyle/>
     <AppBar />
@@ -56,8 +57,8 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
     </Routes>
     </Suspense>
-  </>)
- );
+  </Container>)
+
 };
 
 

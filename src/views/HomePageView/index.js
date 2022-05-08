@@ -1,1 +1,1 @@
-import HomePageView from './HomePageView';
+export {HomePageView} from './HomePageView';

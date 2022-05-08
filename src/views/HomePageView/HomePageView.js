@@ -24,8 +24,8 @@ const HomePageView = () => {
   return(
     <div style={styles.container}>
     <h1 style={styles.title}>
-      Вітаємо на сторінці ваших контактів{' '}
-      <img src={avatar} alt="" width="150" style={styles.avatar} />
+      Вітаємо{' '}
+      <img src={avatar} alt="" width="200" style={styles.avatar} />
     </h1>
   </div>
   )
