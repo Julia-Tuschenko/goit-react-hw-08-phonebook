@@ -1,6 +1,7 @@
 import FormContact from '../../components/Form/index';
 import ContactList from '../../components/ContactList/index';
 import Filter from '../../components/Filter/index';
+import Container from '../../components/GlobalStyle/GlobalStyleConteiner';
 
 const styles = {
   form: {
@@ -12,7 +13,7 @@ const styles = {
 function ContactsRoutsView () {
   
     return(
-        <>
+        <Container>
         <section title="Phonebook" style={styles.form}>
           <h1>Телефонна книга</h1>
           <FormContact/>
@@ -22,7 +23,7 @@ function ContactsRoutsView () {
           <Filter/>
           <ContactList/>
         </section>
-      </>
+      </Container>
     )
 }
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from '../redux/auth/authOperation';
 import Form from 'react-bootstrap/Form';
+import Container from '../components/GlobalStyle/GlobalStyleConteiner';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -41,7 +42,7 @@ const RegisterFormView = () => {
     }; 
 
     return(
-        <>
+        <Container>
         <h1>Сторінка реєстрації</h1>
 
         <Form onSubmit={handleSubmit} style={styles.form}>
@@ -80,7 +81,7 @@ const RegisterFormView = () => {
                 Зареєструвати
             </Button>
         </Form>
-        </>
+        </Container>
     )
 };
 

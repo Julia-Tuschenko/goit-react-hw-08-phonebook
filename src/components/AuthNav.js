@@ -1,28 +1,30 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import Nav from 'react-bootstrap/Nav';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const styles = {
-    link: {
-      display: 'inline-block',
-      textDecoration: 'none',
-      padding: 12,
-      fontWeight: 700,
-      color: '#2A363B',
+    link: { 
+      fontWeight: '700',
+      color: 'rgb(2 2 2)',
+      background: 'rgb(7 233 128)',
     },
-
-  };
+    item:{
+        marginLeft: 10,
+    }
+};
 
 const AppBar = () => {
     return (
         <div>
-            <NavLink to="register"
-            style={styles.link}>
-                Реєстрація
-            </NavLink>
-            <NavLink to="login"
-            style={styles.link}> 
-                Логін
-            </NavLink>
+            <Nav justify variant="tabs">
+            <Nav.Item style={styles.item}>
+                <Nav.Link href="/goit-react-hw-08-phonebook/register" style={styles.link}>Реєстрація</Nav.Link>
+            </Nav.Item>
+            <Nav.Item style={styles.item}>
+                <Nav.Link href="/goit-react-hw-08-phonebook/login" style={styles.link}>Логін</Nav.Link>
+            </Nav.Item>
+            </Nav>
             <Outlet/>
         </div>
     )
@@ -30,3 +32,6 @@ const AppBar = () => {
 
 
 export default AppBar;
+
+
+

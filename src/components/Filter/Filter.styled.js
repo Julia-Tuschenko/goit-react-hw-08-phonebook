@@ -26,10 +26,4 @@ export const InputContact = {
 
 
 
-// export const InputContact = styled.input`
-//   padding: 2px 5px;
-//   margin-top: 6px;
-//   width: 150px;
-// `;
-
 

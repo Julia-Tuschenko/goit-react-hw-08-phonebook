@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import authOperetions from '../redux/auth/authOperation';
 import Form from 'react-bootstrap/Form';
+import Container from '../components/GlobalStyle/GlobalStyleConteiner';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -37,7 +38,7 @@ const LoginFormView = () => {
     }
 
     return(
-        <>
+        <Container>
         <h1>Увійти</h1>
         <Form onSubmit={chandleSubmit} style={styles.form}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -65,7 +66,7 @@ const LoginFormView = () => {
                 Увійти
             </Button>
         </Form>
-        </>
+        </Container>
     )
 };
 

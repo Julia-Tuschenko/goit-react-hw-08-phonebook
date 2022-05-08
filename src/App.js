@@ -12,6 +12,7 @@ import PrivatRoute from './components/PrivatRout';
 import PublicRoute from './components/PublicRoute';
 import authSelectors from './redux/auth/authSelectors';
 import Container from './components/GlobalStyle/GlobalStyleConteiner';
+import {SpinnerApp} from './components/Spinner/SpinnerApp';
 
 const HomePageView = lazy(() => import(`./views/HomePageView/HomePageView`));
 const ContactsRoutsView = lazy(() => import(`./views/ContactsRoutsView/ContactsRoutsView`));
@@ -28,7 +29,7 @@ function App() {
 
   return (
    <Container> 
-    <Suspense fallback={<p>Загружаем...</p>}>
+    <Suspense fallback={<SpinnerApp/>}>
     <GlobalStyle/>
     <AppBar />
       <Routes>
