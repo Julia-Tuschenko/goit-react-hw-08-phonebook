@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './Form.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useAddContactMutation, useFetchContactsQuery } from 'redux/contacts/contactApi';
 
