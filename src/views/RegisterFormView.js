@@ -5,6 +5,9 @@ import Form from 'react-bootstrap/Form';
 import Container from '../components/GlobalStyle/GlobalStyleConteiner';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const styles = {
     form: {
@@ -20,6 +23,8 @@ const RegisterFormView = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+
+
     const handleChange = ({target: {name, value}}) => {
         switch(name){
             case 'name':
@@ -33,9 +38,21 @@ const RegisterFormView = () => {
         }
     };
 
+    const addNewUser = () => {  
+        if (name === '') {
+          return toast.error(`Registration is not possible`);
+          } else if (email === ''){
+            return toast.error(`Registration is not possible`);
+          }else if (password === ''){
+            return toast.error(`Registration is not possible`);
+        }else {
+          dispatch(authOperations.register({name, email, password}));
+          };
+    };
+
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(authOperations.register({name, email, password}));
+        addNewUser();
         setName('');
         setEmail('');
         setPassword('');
@@ -53,7 +70,8 @@ const RegisterFormView = () => {
                 value={name}
                 onChange={handleChange}
                 type="text" 
-                placeholder="Введіть логін" />
+                placeholder="Введіть логін" 
+                />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -81,6 +99,18 @@ const RegisterFormView = () => {
                 Зареєструвати
             </Button>
         </Form>
+        <ToastContainer
+      position="top-center"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      theme="dark"
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      />
         </Container>
     )
 };

@@ -21,27 +21,26 @@ const ContactList = () => {
   };
 
   const possibleСonditions =  data  && !isFetching && !isFetching && <h1>{data.name}</h1>;
-  
   return (
     <>
     {possibleСonditions} 
     {isError && toast.error(`${error.data}`)}
     {isFetching &&  <MutatingDots ariaLabel="loading-indicator" />} 
-    <ListGroup >
-      {mapFilterContacts.map(({ name, id, number }) => {
-        return (
-        <ListGroup.Item as="li" key={id} style={styles.container}>
-        <p>
-          {name}: {number}
-        </p>
-        <Button variant="danger" type="button" onClick={() => handleDeleteContact(id)}>
-          Delete
-        </Button>
-      </ListGroup.Item>
-      )}
-      )}
-    </ListGroup>
-    <ToastContainer
+          <ListGroup >
+          {mapFilterContacts.map(({ name, id, number }) => {
+            return (
+            <ListGroup.Item as="li" key={id} style={styles.container}>
+            <p>
+              {name}: {number}
+            </p>
+            <Button variant="danger" type="button" onClick={() => handleDeleteContact(id)}>
+              Delete
+            </Button>
+          </ListGroup.Item>
+          )}
+          )}
+        </ListGroup>
+   <ToastContainer
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}

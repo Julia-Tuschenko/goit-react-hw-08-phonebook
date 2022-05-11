@@ -5,6 +5,8 @@ import Form from 'react-bootstrap/Form';
 import Container from '../components/GlobalStyle/GlobalStyleConteiner';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const styles = {
     form: {
@@ -30,9 +32,19 @@ const LoginFormView = () => {
         }
     };
 
+    const loginUser = () => {  
+         if (email === ''){
+            return toast.error(`Entry is not possible`);
+          }else if (password === ''){
+            return toast.error(`Entry is not possible`);
+        } else {
+            dispath(authOperetions.logIn({email, password}))
+        }
+    };
+
     const chandleSubmit = (element) => {
         element.preventDefault();
-        dispath(authOperetions.logIn({email, password}))
+        loginUser();
         setEmail('');
         setPassword('');
     }
@@ -66,6 +78,18 @@ const LoginFormView = () => {
                 Увійти
             </Button>
         </Form>
+        <ToastContainer
+      position="top-center"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      theme="dark"
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      />
         </Container>
     )
 };

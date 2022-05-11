@@ -40,13 +40,13 @@ function App() {
         }/>
         <Route path="/contacts" 
             element={
-              <PrivatRoute redirectTo="/login" >
+              <PrivatRoute redirectTo="/" >
                 <ContactsRoutsView />
               </PrivatRoute> 
             }>
         </Route>
         <Route path="/register" element={
-            <PublicRoute restricted redirectTo="/">
+            <PublicRoute restricted redirectTo="/contacts">
               <RegisterFormView />  
             </PublicRoute>
         } />

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = `https://connections-api.herokuapp.com/`;
 
@@ -20,7 +21,7 @@ const register = createAsyncThunk(
             token.set(data.token);
             return data;
         } catch (error){
-
+            toast.error(`Registration is not possible`)
         }
 });
 
@@ -31,7 +32,7 @@ const logIn = createAsyncThunk(
             token.set(data.token);
             return data;
         } catch (error){
-
+            toast.error(`Entry is not possible`)
         }
 });
 
@@ -41,7 +42,7 @@ const logOut = createAsyncThunk(
             await axios.post(`/users/logout`);
             token.unset();
         } catch (error){
-
+            toast.error(`The way out is impossible`)
         }
 });
 
@@ -59,7 +60,7 @@ const fetchCurrentUser = createAsyncThunk(
             const {data} = await axios.get('/users/current');
             return data;
         }catch(error){
-
+            toast.error(`${error.message}`)
         }
     }
 );
