@@ -21,32 +21,30 @@ const RegisterFormView = lazy(() => import(`./views/RegisterFormView`));
 
 function App() {
   const dispatch = useDispatch();
-  const isFetchingCurrentUser = useSelector(authSelectors.isFetchingCurrentUser);
+  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurren);
   console.log(isFetchingCurrentUser);
   useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser())
+    dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
   return (
    <Container> 
-    <Suspense fallback={<SpinnerApp/>}>
+    {isFetchingCurrentUser ? (
+      <SpinnerApp/>
+      ) : (
+        <>
     <GlobalStyle/>
     <AppBar />
+    <Suspense fallback={<SpinnerApp/>}>
       <Routes>
         <Route path="/" element={
           <PublicRoute redirectTo="/">
             <HomePageView />  
           </PublicRoute>
         }/>
-        <Route path="/contacts" 
-            element={
-              <PrivatRoute redirectTo="/" >
-                <ContactsRoutsView />
-              </PrivatRoute> 
-            }>
-        </Route>
+
         <Route path="/register" element={
-            <PublicRoute restricted redirectTo="/contacts">
+            <PublicRoute restricted redirectTo="/register">
               <RegisterFormView />  
             </PublicRoute>
         } />
@@ -55,9 +53,17 @@ function App() {
               <LoginFormView /> 
             </PublicRoute>
         } />
+        <Route path="/contacts" element={
+            <PrivatRoute redirectTo="/login" >
+              <ContactsRoutsView />
+            </PrivatRoute> 
+        }>
+        </Route>
         <Route path="*" element={<Navigate to="/" />} />
     </Routes>
-    </Suspense>
+    </Suspense>  
+    </> 
+    )}
   </Container>)
 
 };
