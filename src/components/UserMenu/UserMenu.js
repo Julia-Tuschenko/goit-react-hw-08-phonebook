@@ -30,7 +30,7 @@ const UserMenu = () => {
   const dispatch = useDispatch();
   const name = useSelector(authSelectors.getUsername);
   const avatar = defaultAvatar;
-
+console.log(name);
     return(
         <div style={styles.container}>
             <img src={avatar} alt="" width="32" style={styles.avatar} />

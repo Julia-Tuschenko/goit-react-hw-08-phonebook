@@ -44,7 +44,7 @@ function App() {
         }/>
 
         <Route path="/register" element={
-            <PublicRoute restricted redirectTo="/register">
+            <PublicRoute restricted redirectTo="/contacts">
               <RegisterFormView />  
             </PublicRoute>
         } />
